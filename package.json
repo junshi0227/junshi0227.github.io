@@ -1,0 +1,28 @@
+{
+  "name": "personal-blog",
+  "version": "0.1.0",
+  "description": "基于 Hexo 与 Redefine 的个人博客初版",
+  "scripts": {
+    "dev": "hexo server",
+    "clean": "hexo clean",
+    "build": "hexo generate",
+    "new": "hexo new"
+  },
+  "private": true,
+  "engines": {"node": ">=20"},
+  "hexo": {"version": "8.1.2"},
+  "dependencies": {
+    "hexo": "^8.1.2",
+    "hexo-filter-mathjax": "^0.11.1",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-searchdb": "^1.5.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.1",
+    "hexo-renderer-stylus": "^3.0.1",
+    "hexo-server": "^3.0.0",
+    "hexo-theme-redefine": "^2.9.0"
+  }
+}

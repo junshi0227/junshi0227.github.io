@@ -1,0 +1,106 @@
+info:
+  title: 个人博客
+  subtitle: 科研、项目与学习笔记
+  author: 你的名字
+  url: https://YOUR_PROJECT.pages.dev
+defaults:
+  favicon: /images/favicon.svg
+  logo:
+  avatar: /images/avatar.svg
+colors:
+  primary: '#a44830'
+  default_mode: light
+global:
+  content_max_width: 1080px
+  hover:
+    shadow: false
+    scale: false
+  website_counter:
+    enable: false
+  single_page: false
+  open_graph:
+    enable: true
+    image:
+    description: 记录研究过程、工程实践与持续学习。
+home_banner:
+  enable: false
+  style: static
+  image:
+    light: /images/banner.svg
+    dark: /images/banner.svg
+  title: 记录研究与实践
+  subtitle:
+    text:
+      - 科研 · 项目 · 学习笔记
+    loop: false
+  text_color:
+    light: '#ffffff'
+    dark: '#ffffff'
+  social_links:
+    enable: false
+navbar:
+  color:
+    left: '#f7f8f7'
+    right: '#f7f8f7'
+    transparency: 98
+  width:
+    home: 1080px
+    pages: 1080px
+  links:
+    归档:
+      path: /archives/
+      icon: fa-regular fa-calendar
+    分类:
+      path: /categories/
+      icon: fa-regular fa-folder
+    标签:
+      path: /tags/
+      icon: fa-regular fa-tags
+    项目:
+      path: /projects/
+      icon: fa-regular fa-grid-2
+    关于:
+      path: /about/
+      icon: fa-regular fa-user
+  search:
+    enable: true
+    preload: false
+home:
+  sidebar:
+    enable: false
+    position: left
+    first_item: info
+    announcement: 这里将记录科研探索、工程项目与课程学习。个人资料请在发布前替换。
+    links:
+      代表项目:
+        path: /projects/
+        icon: fa-regular fa-grid-2
+      联系方式:
+        path: /about/#contact
+        icon: fa-regular fa-envelope
+  article_date_format: YYYY-MM-DD
+  excerpt_length: 160
+articles:
+  style:
+    font_size: 17px
+    line_height: 1.8
+    image_border_radius: 10px
+  author_label:
+    enable: false
+  word_count:
+    enable: false
+  code_block:
+    copy: true
+    style: simple
+  toc:
+    enable: true
+    max_depth: 3
+footer:
+  runtime: false
+  icon: ''
+  statistics: false
+  customize: 科研、项目与学习笔记
+page_templates:
+  tags_style: cloud
+inject:
+  enable: false

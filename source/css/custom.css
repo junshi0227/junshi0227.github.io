@@ -1,0 +1,166 @@
+:root {
+  --blog-bg: #f5f7f6;
+  --blog-paper: #ffffff;
+  --blog-ink: #203138;
+  --blog-muted: #627278;
+  --blog-rule: #d7dfdc;
+  --blog-accent: #a44830;
+  --blog-panel: #e9efec;
+}
+
+.dark {
+  --blog-bg: #141d21;
+  --blog-paper: #1e292e;
+  --blog-ink: #eef3f0;
+  --blog-muted: #aab9b8;
+  --blog-rule: #344347;
+  --blog-accent: #e39a7a;
+  --blog-panel: #24343a;
+}
+
+html { scroll-behavior: smooth; }
+body, .page-container { background: var(--blog-bg) !important; }
+.navbar-container { background: var(--blog-bg) !important; border-bottom: 1px solid var(--blog-rule); box-shadow: none !important; }
+.navbar-container .logo-title h1 { font-size: 1.12rem !important; font-weight: 750 !important; letter-spacing: .04em; }
+.navbar-container .navbar-item { font-size: .9rem !important; }
+.main-content-body { padding: 3rem 0 5rem !important; }
+.main-content-body .main-content { width: min(1080px, calc(100% - 48px)) !important; max-width: 1080px !important; }
+.home-content-container { margin: 0 !important; }
+.main-content-footer, footer.footer { background: var(--blog-bg) !important; }
+
+.blog-home-intro {
+  background-color: #19363d;
+  background-image: linear-gradient(105deg, rgba(8,30,34,.84) 0%, rgba(8,30,34,.75) 54%, rgba(8,30,34,.55) 100%), url('/images/forest-light.jpg');
+  background-size: cover;
+  background-position: center 53%;
+  color: #f6f8f5;
+  padding: clamp(1.7rem, 4vw, 3.4rem);
+  border-radius: 14px;
+  box-shadow: none;
+}
+.blog-hero-kicker, .blog-hero-foot, .blog-project-bottom, .blog-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.blog-hero-kicker { padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,.26); color: #c9dedc; font-size: .73rem; font-weight: 700; letter-spacing: .14em; }
+.blog-hero-main { display: grid; grid-template-columns: 1.35fr .7fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: end; padding: 3.5rem 0 3.7rem; }
+.blog-home-intro h1 { margin: 0; color: #f6f8f5; font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif; font-size: clamp(2.3rem, 4.3vw, 4.2rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.35; }
+.blog-hero-aside { border-left: 1px solid rgba(255,255,255,.35); padding-left: 1.45rem; }
+.blog-hero-aside p { color: #e0eae7; font-size: .94rem; line-height: 1.85; margin: 0 0 .9rem; }
+.blog-hero-aside p:last-child { margin-bottom: 0; color: #b6ceca; }
+.blog-hero-foot { padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,.26); }
+.blog-intro-actions { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+.blog-intro-actions a { color: #f5f8f4; font-size: .9rem; font-weight: 650; border-bottom: 1px solid rgba(255,255,255,.55); padding-bottom: .2rem; }
+.blog-intro-actions a:first-child { color: #f3b695; border-color: #f3b695; }
+.blog-hero-note { color: #bad0cc; font-size: .78rem; letter-spacing: .04em; }
+
+.blog-home-projects { margin-top: 4.2rem; }
+.blog-section-heading { align-items: end; padding: 1rem 0 1.4rem; border-top: 1px solid var(--blog-ink); }
+.blog-eyebrow { margin: 0 0 .65rem; color: var(--blog-accent); font-size: .73rem; font-weight: 750; letter-spacing: .16em; }
+.blog-section-heading h2 { color: var(--blog-ink); font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif; font-size: 1.9rem; font-weight: 700; line-height: 1.25; margin: 0; }
+.blog-section-heading a { color: var(--blog-ink); font-size: .86rem; font-weight: 650; white-space: nowrap; border-bottom: 1px solid var(--blog-rule); padding-bottom: .2rem; }
+.blog-section-heading a:hover { color: var(--blog-accent); border-color: var(--blog-accent); }
+.blog-project-mini-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+.blog-project-mini { display: flex; flex-direction: column; min-height: 235px; padding: 1.55rem 1.7rem 1.3rem; color: var(--blog-ink); background: var(--blog-panel); border: 1px solid var(--blog-rule); border-radius: 12px; transition: border-color .2s ease, transform .2s ease; }
+.blog-project-mini:hover { border-color: var(--blog-accent); transform: translateY(-3px); }
+.blog-project-no { display: flex; align-items: center; gap: .75rem; color: var(--blog-accent); font-size: .72rem; font-weight: 800; letter-spacing: .15em; }
+.blog-project-no em { color: var(--blog-muted); font-style: normal; font-weight: 500; letter-spacing: 0; }
+.blog-project-mini strong { display: block; margin: 1.3rem 0 .45rem; color: var(--blog-ink); font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif; font-size: clamp(1.45rem,2.4vw,2rem); font-weight: 700; line-height: 1.4; }
+.blog-project-mini small { display: block; color: var(--blog-muted); font-size: .88rem; line-height: 1.6; }
+.blog-project-bottom { margin-top: auto; padding-top: 1.2rem; color: var(--blog-muted); font-size: .69rem; font-weight: 750; letter-spacing: .11em; }
+.blog-project-bottom b { color: var(--blog-accent); font-size: 1.1rem; font-weight: 400; }
+.blog-latest { margin-top: 4rem; scroll-margin-top: 6rem; }
+
+.home-article-list { margin: 0; padding: 0; }
+.home-article-list .home-article-item { margin: 0 !important; background: transparent !important; border: 0 !important; border-top: 1px solid var(--blog-rule) !important; border-radius: 0 !important; box-shadow: none !important; transform: none !important; }
+.home-article-list .home-article-item:hover { box-shadow: none !important; }
+.home-article-list .home-article-item > .flex { padding: 1.8rem 0 2rem !important; gap: .9rem !important; }
+.home-article-list .home-article-title { color: var(--blog-ink) !important; font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif !important; font-size: clamp(1.25rem, 2.3vw, 1.6rem) !important; font-weight: 700 !important; }
+.home-article-list .home-article-content { color: var(--blog-muted) !important; font-size: .96rem; line-height: 1.75; text-align: left !important; max-width: 48rem; }
+.home-article-list .home-article-content p { margin: 0; }
+.home-article-list .home-article-meta-info-container { font-size: .78rem !important; }
+.home-content-container .home-paginator { border-top: 1px solid var(--blog-rule); }
+
+.project-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; margin: 1.8rem 0; }
+.project-card { overflow: hidden; border: 1px solid var(--blog-rule); border-radius: 12px; background: var(--blog-paper); box-shadow: none; }
+.project-cover { min-height: 142px; display: flex; align-items: end; padding: 1.3rem; color: white; font-size: 1.35rem; font-weight: 800; letter-spacing: .09em; }
+.project-cover-vision { background: #19363d; }
+.project-cover-gnss { background: #8d4f39; }
+.project-card-body { padding: 1.35rem 1.5rem 1.6rem; }
+.project-card-body h2 { font-size: 1.28rem !important; margin: .45rem 0 .65rem !important; font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif; }
+.project-card-body p { font-size: .92rem; line-height: 1.75; }
+.project-card-body .project-meta { color: var(--blog-accent); font-size: .76rem; font-weight: 700; }
+.project-card-body .project-stack { color: var(--blog-muted); }
+.project-card-body a { color: var(--blog-accent); font-weight: 700; font-size: .9rem; }
+
+.page-template-container, .article-content-container {
+  background: var(--blog-paper) !important;
+  border: 1px solid var(--blog-rule) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+.page-template-container:hover, .article-content-container:hover { box-shadow: none !important; }
+.page-template-content > h1, .page-title-header {
+  color: var(--blog-ink) !important;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif !important;
+  font-size: clamp(2rem, 4vw, 2.7rem) !important;
+  line-height: 1.3 !important;
+}
+.article-title-regular {
+  color: var(--blog-ink) !important;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif !important;
+  font-size: clamp(2rem, 3.5vw, 2.8rem) !important;
+  line-height: 1.38 !important;
+  letter-spacing: -.02em !important;
+}
+.article-header .avatar { display: none; }
+.article-content.markdown-body h2 { color: var(--blog-ink); font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif; font-size: 1.65rem; }
+.article-content.markdown-body h3 { color: var(--blog-ink); font-size: 1.25rem; }
+.article-content.markdown-body { line-height: 1.85; }
+
+/* Give the theme's remaining boxes the same soft corners as the custom cards. */
+.category-list-content .all-category-list > .all-category-list-item,
+.category-list-content .all-category-list-count,
+.tagcloud-content .tag-list li a,
+.tagcloud-content .tag-list[data-show-value] a::after,
+.paginator,
+.paginator a.page-number,
+.paginator span.page-number,
+.paginator a.prev,
+.paginator a.next,
+.side-tools-container .right-bottom-tools,
+.side-tools-container .right-bottom-tools.rss a,
+.search-pop-overlay .search-popup,
+.navbar-container .sub-menu,
+.navbar-container .sub-menu li a,
+.article-meta-info .hover-info,
+.archive-year-post-count,
+.article-content.markdown-body blockquote,
+.article-content.markdown-body table,
+.article-content.markdown-body table th,
+.article-content.markdown-body table td,
+.article-content.markdown-body img,
+.article-copyright-info {
+  border-radius: 10px !important;
+}
+
+@media (max-width: 760px) {
+  .main-content-body { padding: 1.2rem 0 3rem !important; }
+  .main-content-body .main-content { width: calc(100% - 32px) !important; }
+  .blog-hero-main { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.8rem 0; }
+  .blog-home-intro h1 { font-size: clamp(2rem, 8vw, 3.1rem); }
+  .blog-hero-aside { padding-left: 1rem; }
+  .blog-home-projects { margin-top: 3rem; }
+  .blog-project-mini-grid, .project-grid { grid-template-columns: 1fr; }
+  .blog-project-mini { min-height: 210px; }
+  .blog-latest { margin-top: 3rem; }
+  .page-template-container { padding: 1.25rem !important; }
+  .article-content-container { padding: 1.1rem .7rem !important; }
+}
+
+@media (max-width: 500px) {
+  .blog-home-intro { padding: 1.3rem; }
+  .blog-home-intro { background-image: linear-gradient(100deg, rgba(8,30,34,.86), rgba(8,30,34,.7)), url('/images/forest-light.jpg'); background-position: 48% center; }
+  .blog-hero-kicker span:last-child, .blog-hero-note { display: none; }
+  .blog-hero-main { padding: 2.3rem 0; }
+  .blog-hero-aside p { font-size: .9rem; }
+  .blog-section-heading h2 { font-size: 1.55rem; }
+  .blog-project-mini { padding: 1.3rem; }
+}
