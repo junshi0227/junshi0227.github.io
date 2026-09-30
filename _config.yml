@@ -2,10 +2,10 @@ title: 个人博客
 subtitle: 科研、项目与学习笔记
 description: 记录研究过程、工程实践与持续学习。
 keywords: GNSS,PPP,信号处理,嵌入式,学习笔记
-author: 你的名字
+author: junshi0227
 language: zh-CN
 timezone: Asia/Shanghai
-url: https://YOUR_PROJECT.pages.dev
+url: https://junshi0227.github.io
 root: /
 permalink: posts/:title/
 source_dir: source

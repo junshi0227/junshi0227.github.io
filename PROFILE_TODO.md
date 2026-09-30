@@ -4,10 +4,10 @@
 
 | 项目 | 当前占位内容 | 修改位置 |
 | --- | --- | --- |
-| 站点名称、副标题、作者 | `个人博客`、`科研、项目与学习笔记`、`你的名字` | `_config.yml`、`_config.redefine.yml` |
-| 站点地址 | `https://YOUR_PROJECT.pages.dev` | 两个配置文件中的`url`；拿到Pages地址后先替换，绑定域名后再改为正式域名 |
+| 站点名称、副标题、作者 | `个人博客`、`科研、项目与学习笔记`、`junshi0227` | `_config.yml`、`_config.redefine.yml`；可按喜好修改 |
+| 站点地址 | `https://junshi0227.github.io` | 两个配置文件中的`url`；绑定自定义域名后再改为正式域名 |
 | 个人简介 | 概括性示例文字 | `source/about/index.md`、`scripts/home-sections.js` |
-| 邮箱、GitHub | `YOUR_EMAIL@example.com`、`YOUR_USERNAME` | `source/about/index.md`；按需在主题配置中启用社交链接 |
+| 联系方式 | GitHub主页已填写，邮箱未公开 | `source/about/index.md`；按需添加公开邮箱或其他方式 |
 | 头像 | `ME` 占位图 | `source/images/avatar.svg` 或把 `defaults.avatar` 改为自己的图片 |
 | 首页背景 | 从个人壁纸文件夹选用的森林光影图 | `source/images/forest-light.jpg`；背景位置和遮罩在 `source/css/custom.css` |
 | 项目经历、时间、结果 | 两个示例项目 | `source/projects/index.md`、`scripts/home-sections.js`、对应文章 |
