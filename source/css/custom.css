@@ -51,7 +51,7 @@ body, .page-container { background: var(--blog-bg) !important; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(16, 31, 43, .16) 100%);
+  background: radial-gradient(ellipse 44% 27% at 50% 49%, rgba(4, 17, 37, .5), transparent 100%), linear-gradient(180deg, transparent 35%, rgba(4, 17, 37, .22) 100%);
   pointer-events: none;
 }
 .page-container:has(.home-banner-background) .home-banner-container .description {
@@ -61,7 +61,7 @@ body, .page-container { background: var(--blog-bg) !important; }
   padding-top: 3.5rem !important;
 }
 .page-container:has(.home-banner-background) .navbar-container {
-  background: rgba(255, 245, 232, .45) !important;
+  background: rgba(238, 246, 255, .68) !important;
   backdrop-filter: blur(18px);
 }
 .page-container:has(.home-banner-background) .home-sidebar-container .sidebar-links,

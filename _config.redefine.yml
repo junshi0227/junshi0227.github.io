@@ -26,8 +26,8 @@ home_banner:
   enable: true
   style: fixed
   image:
-    light: /images/wallhaven-wqery6-light.webp
-    dark: /images/wallhaven-wqery6-dark.webp
+    light: /images/blue-hour-fuji.jpg
+    dark: /images/blue-hour-fuji.jpg
   title: 个人博客
   subtitle:
     text:
