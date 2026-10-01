@@ -65,7 +65,7 @@ mathjax: true
 
 ## 3. 修改页面
 
-- 首页横幅标题、副标题和背景：`_config.redefine.yml`；代表项目：`scripts/home-sections.js`。
+- 首页横幅标题、副标题、背景和打字速度：`_config.redefine.yml`。`home_banner.style: fixed`让背景在滚动时保持固定，主题会在滚动后柔化背景；代表项目：`scripts/home-sections.js`。
 - 项目卡片、封面、技术栈与详情链接：`source/projects/index.md`。
 - 关于与联系方式：`source/about/index.md`。
 - 导航、头像、颜色、搜索：`_config.redefine.yml`。

@@ -13,7 +13,7 @@ colors:
 global:
   content_max_width: 1080px
   hover:
-    shadow: false
+    shadow: true
     scale: false
   website_counter:
     enable: false
@@ -24,7 +24,7 @@ global:
     description: 记录研究过程、工程实践与持续学习。
 home_banner:
   enable: true
-  style: static
+  style: fixed
   image:
     light: /images/wallhaven-wqery6-light.webp
     dark: /images/wallhaven-wqery6-dark.webp
@@ -32,7 +32,12 @@ home_banner:
   subtitle:
     text:
       - 记录科研、项目与学习
-    loop: false
+      - 分享实践，也保留思考
+    typing_speed: 95
+    backing_speed: 55
+    starting_delay: 450
+    backing_delay: 1800
+    loop: true
   text_color:
     light: '#ffffff'
     dark: '#ffffff'
@@ -75,9 +80,9 @@ navbar:
     preload: false
 home:
   sidebar:
-    enable: false
+    enable: true
     position: left
-    first_item: info
+    first_item: menu
     announcement: 这里将记录科研探索、工程项目与课程学习。个人资料请在发布前替换。
     links:
       代表项目:

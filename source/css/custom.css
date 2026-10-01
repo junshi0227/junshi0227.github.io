@@ -36,6 +36,79 @@ body, .page-container { background: var(--blog-bg) !important; }
 .home-content-container { margin: 0 !important; }
 .main-content-footer, footer.footer { background: var(--blog-bg) !important; }
 
+/* The fixed Redefine banner stays visible behind the home feed while scrolling. */
+.page-container:has(.home-banner-background),
+.page-container:has(.home-banner-background) .main-content-container,
+.page-container:has(.home-banner-background) .main-content-body,
+.page-container:has(.home-banner-background) .main-content-footer,
+.page-container:has(.home-banner-background) footer.footer {
+  background: transparent !important;
+}
+.page-container:has(.home-banner-background) .home-banner-background {
+  filter: none;
+}
+.page-container:has(.home-banner-background) .home-banner-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(16, 31, 43, .16) 100%);
+  pointer-events: none;
+}
+.page-container:has(.home-banner-background) .home-banner-container .description {
+  animation: banner-arrive .85s ease-out both;
+}
+.page-container:has(.home-banner-background) .main-content-body {
+  padding-top: 3.5rem !important;
+}
+.page-container:has(.home-banner-background) .navbar-container {
+  background: rgba(255, 245, 232, .45) !important;
+  backdrop-filter: blur(18px);
+}
+.page-container:has(.home-banner-background) .home-sidebar-container .sidebar-links,
+.page-container:has(.home-banner-background) .home-sidebar-container .sidebar-content,
+.page-container:has(.home-banner-background) .blog-project-mini,
+.page-container:has(.home-banner-background) .home-article-list .home-article-item {
+  background: rgba(255, 250, 244, .82) !important;
+  border: 1px solid rgba(255, 255, 255, .58) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 12px 36px rgba(17, 37, 47, .10) !important;
+  backdrop-filter: blur(16px);
+}
+.dark .page-container:has(.home-banner-background) .home-sidebar-container .sidebar-links,
+.dark .page-container:has(.home-banner-background) .home-sidebar-container .sidebar-content,
+.dark .page-container:has(.home-banner-background) .blog-project-mini,
+.dark .page-container:has(.home-banner-background) .home-article-list .home-article-item {
+  background: rgba(29, 42, 52, .84) !important;
+  border-color: rgba(255, 255, 255, .12) !important;
+}
+.page-container:has(.home-banner-background) .blog-project-mini,
+.page-container:has(.home-banner-background) .home-article-list .home-article-item {
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease !important;
+}
+.page-container:has(.home-banner-background) .blog-project-mini:hover,
+.page-container:has(.home-banner-background) .home-article-list .home-article-item:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 22px 44px rgba(17, 37, 47, .18) !important;
+  border-color: rgba(184, 95, 97, .48) !important;
+}
+.page-container:has(.home-banner-background) .home-article-list .home-article-item { margin-bottom: 1rem !important; }
+.page-container:has(.home-banner-background) .home-article-list .home-article-item > .flex { padding: 1.5rem 1.7rem 1.8rem !important; }
+.page-container:has(.home-banner-background) .blog-section-heading { border-color: rgba(255, 255, 255, .7); }
+.page-container:has(.home-banner-background) .blog-section-heading h2,
+.page-container:has(.home-banner-background) .blog-section-heading > a { color: #f9fbfc; text-shadow: 0 2px 14px rgba(10, 30, 40, .55); }
+.page-container:has(.home-banner-background) .blog-eyebrow { color: #fbd7c4; text-shadow: 0 2px 10px rgba(10, 30, 40, .5); }
+.page-container:has(.home-banner-background) .home-paginator { border-color: rgba(255, 255, 255, .55); }
+@keyframes banner-arrive {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .page-container:has(.home-banner-background) .home-banner-container .description { animation: none; }
+  .page-container:has(.home-banner-background) .blog-project-mini,
+  .page-container:has(.home-banner-background) .home-article-list .home-article-item { transition: none !important; }
+}
+
 .blog-project-bottom, .blog-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 
 .blog-home-projects { margin-top: 4.2rem; }
