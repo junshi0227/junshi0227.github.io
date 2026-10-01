@@ -2,7 +2,7 @@
 
 这是按提供的执行说明搭建的Hexo静态博客，使用Redefine主题、Markdown文章、分类、标签、归档、站内搜索、代码高亮和按文章启用的数学公式。本站使用GitHub Pages从仓库自动构建。第一阶段不需要服务器或数据库。
 
-视觉采用偏研究笔记的编排：清楚的标题层级、简洁的项目摘要和按时间排列的文章。布局参考了[cutedian.top](https://cutedian.top/)的内容组织、[Redefine演示](https://redefine.ohevan.com/)的主题能力，以及[Academic Pages](https://academicpages.github.io/)的研究型信息架构；页面样式在本站重新编写。主要样式在`source/css/custom.css`，首页结构在`scripts/home-sections.js`。
+首页采用Redefine主题自带的山湖横幅、居中标题和半透明导航；横幅配置在`_config.redefine.yml`。横幅下保留研究笔记式的项目摘要与文章列表，相关样式在`source/css/custom.css`，内容结构在`scripts/home-sections.js`。
 
 > **内容状态**：先打开 [PROFILE_TODO.md](PROFILE_TODO.md)，查看仍需替换的个人简介、示例文章和项目。初版内容只用来验证页面与写作流程。
 
@@ -13,14 +13,14 @@
 | `_config.yml` | Hexo站点配置 |
 | `_config.redefine.yml` | Redefine主题配置 |
 | `scaffolds/post.md` | 新文章模板 |
-| `scripts/home-sections.js` | 首页简介与代表项目 |
+| `scripts/home-sections.js` | 首页代表项目与文章分区 |
 | `source/_posts/` | Markdown文章 |
 | `source/about/` | 关于与联系方式 |
 | `source/projects/` | 项目展示 |
 | `source/categories/` | 分类页 |
 | `source/tags/` | 标签页 |
 | `source/css/custom.css` | 本站附加样式 |
-| `source/images/` | 头像、favicon和首页背景图 |
+| `source/images/` | 头像、favicon和可选图片素材 |
 | `public/` | 构建结果，不提交 |
 
 ## 1. 安装与启动
@@ -65,7 +65,7 @@ mathjax: true
 
 ## 3. 修改页面
 
-- 首页简介和代表项目：`scripts/home-sections.js`。
+- 首页横幅标题、副标题和背景：`_config.redefine.yml`；代表项目：`scripts/home-sections.js`。
 - 项目卡片、封面、技术栈与详情链接：`source/projects/index.md`。
 - 关于与联系方式：`source/about/index.md`。
 - 导航、头像、颜色、搜索：`_config.redefine.yml`。

@@ -8,7 +8,7 @@ defaults:
   logo:
   avatar: /images/avatar.svg
 colors:
-  primary: '#a44830'
+  primary: '#bd6a68'
   default_mode: light
 global:
   content_max_width: 1080px
@@ -23,21 +23,29 @@ global:
     image:
     description: 记录研究过程、工程实践与持续学习。
 home_banner:
-  enable: false
+  enable: true
   style: static
   image:
-    light: /images/banner.svg
-    dark: /images/banner.svg
-  title: 记录研究与实践
+    light: /images/wallhaven-wqery6-light.webp
+    dark: /images/wallhaven-wqery6-dark.webp
+  title: 个人博客
   subtitle:
     text:
-      - 科研 · 项目 · 学习笔记
+      - 记录科研、项目与学习
     loop: false
   text_color:
     light: '#ffffff'
     dark: '#ffffff'
   social_links:
-    enable: false
+    enable: true
+    style: default
+    links:
+      - icon: github
+        url: https://github.com/junshi0227
+      - icon: fa-solid fa-link
+        url: /about/
+      - icon: fa-regular fa-folder-open
+        url: /projects/
 navbar:
   color:
     left: '#f7f8f7'
