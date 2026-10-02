@@ -29,8 +29,10 @@ body, .page-container { background: var(--blog-bg) !important; }
 .dark .page-container:has(.home-banner-container) .navbar-container { background: rgba(26, 36, 48, .5) !important; }
 .home-banner-container .description { text-shadow: 0 2px 20px rgba(15, 31, 44, .38); }
 .home-banner-container .description p { margin-top: .8rem !important; }
-.navbar-container .logo-title h1 { font-size: 1.12rem !important; font-weight: 750 !important; letter-spacing: .04em; }
+.home-banner-container .description { font-family: 'Chillax-Variable', 'Geist Variable', sans-serif !important; font-size: clamp(2.6rem, 4vw, 3.25rem); font-weight: 600; letter-spacing: .015em; }
+.navbar-container .logo-title h1 { font-family: 'Chillax-Variable', 'Geist Variable', sans-serif !important; font-size: 1.42rem !important; font-weight: 600 !important; letter-spacing: .005em; }
 .navbar-container .navbar-item { font-size: .9rem !important; }
+.home-sidebar-container .sidebar-content .author .label { font-family: 'Geist Variable', sans-serif; font-size: .82rem; font-style: italic; line-height: 1.55; padding: 0 .45rem; }
 .main-content-body { padding: 3rem 0 5rem !important; }
 .main-content-body .main-content { width: min(1080px, calc(100% - 48px)) !important; max-width: 1080px !important; }
 .home-content-container { margin: 0 !important; }
@@ -219,6 +221,8 @@ body, .page-container { background: var(--blog-bg) !important; }
 }
 
 @media (max-width: 500px) {
+  .navbar-container .logo-title h1 { font-size: 1.2rem !important; }
+  .home-banner-container .description { font-size: 2.45rem; }
   .blog-section-heading h2 { font-size: 1.55rem; }
   .blog-project-mini { padding: 1.3rem; }
 }

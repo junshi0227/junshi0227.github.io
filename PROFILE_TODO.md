@@ -4,7 +4,7 @@
 
 | 项目 | 当前占位内容 | 修改位置 |
 | --- | --- | --- |
-| 站点名称、副标题、作者 | `君军均俊钧`、`科研、项目与学习笔记`、`君军均俊钧` | `_config.yml`、`_config.redefine.yml`；可按喜好修改 |
+| 站点名称、首页标题、作者 | `Junshi Blog`、`Jun·Keep Learning`、`君军均俊钧` | `_config.yml`、`_config.redefine.yml`；可按喜好修改 |
 | 站点地址 | `https://junshi0227.github.io` | 两个配置文件中的`url`；绑定自定义域名后再改为正式域名 |
 | 个人简介 | 概括性示例文字 | `source/about/index.md`、`scripts/home-sections.js` |
 | 联系方式 | GitHub主页已填写，邮箱未公开 | `source/about/index.md`；按需添加公开邮箱或其他方式 |

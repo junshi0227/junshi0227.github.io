@@ -1,5 +1,5 @@
 info:
-  title: 君军均俊钧
+  title: Junshi Blog
   subtitle: 科研、项目与学习笔记
   author: 君军均俊钧
   url: https://junshi0227.github.io
@@ -28,7 +28,7 @@ home_banner:
   image:
     light: /images/blue-hour-fuji.jpg
     dark: /images/blue-hour-fuji.jpg
-  title: 君军均俊钧
+  title: Jun·Keep Learning
   subtitle:
     text:
       - 记录科研、项目与学习
@@ -83,7 +83,7 @@ home:
     enable: true
     position: left
     first_item: menu
-    announcement: 这里将记录科研探索、工程项目与课程学习。个人资料请在发布前替换。
+    announcement:
     links:
       代表项目:
         path: /projects/
@@ -99,7 +99,10 @@ articles:
     line_height: 1.8
     image_border_radius: 10px
   author_label:
-    enable: false
+    enable: true
+    auto: false
+    list:
+      - Do not go gentle into that good night.
   word_count:
     enable: false
   code_block:
