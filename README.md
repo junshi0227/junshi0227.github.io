@@ -1,8 +1,8 @@
-# 个人博客初版
+# 君军均俊钧的个人博客
 
 这是按提供的执行说明搭建的Hexo静态博客，使用Redefine主题、Markdown文章、分类、标签、归档、站内搜索、代码高亮和按文章启用的数学公式。本站使用GitHub Pages从仓库自动构建。第一阶段不需要服务器或数据库。
 
-首页采用Redefine主题自带的山湖横幅、居中标题和半透明导航；横幅配置在`_config.redefine.yml`。横幅下保留研究笔记式的项目摘要与文章列表，相关样式在`source/css/custom.css`，内容结构在`scripts/home-sections.js`。
+首页采用蓝调雪山横幅、居中标题和半透明导航；横幅配置在`_config.redefine.yml`。横幅下保留研究笔记式的项目摘要与文章列表，相关样式在`source/css/custom.css`，内容结构在`scripts/home-sections.js`。
 
 > **内容状态**：先打开 [PROFILE_TODO.md](PROFILE_TODO.md)，查看仍需替换的个人简介、示例文章和项目。初版内容只用来验证页面与写作流程。
 
