@@ -1,9 +1,9 @@
 ---
-title: 项目
+title: 项目与研究
 date: 2026-09-29
 ---
 
-这里先用两个**展示结构示例**说明项目页的写法。请在正式发布前替换为本人实际参与的项目、时间、截图与结果。
+这里整理一个GNSS授时研究主题；PCB卡片仍是展示页面结构的示例，后续需要替换为真实项目。
 
 <div class="project-grid">
   <article class="project-card">
@@ -17,13 +17,13 @@ date: 2026-09-29
     </div>
   </article>
   <article class="project-card">
-    <div class="project-cover project-cover-gnss" role="img" aria-label="GNSS研究示例项目封面，待替换为实际项目图片"><span>GNSS·PPP</span></div>
+    <div class="project-cover project-cover-gnss" role="img" aria-label="GNSS授时研究主题封面"><span>GNSS·PPP</span></div>
     <div class="project-card-body">
-      <p class="project-meta">示例项目 · 时间待填写</p>
-      <h2>多系统PPP时间传递研究</h2>
-      <p>示例简介：整理数据、模型选择、钟差估计与稳定度评估的研究记录。请以真实实验替换。</p>
-      <p class="project-stack">技术栈：GNSS·PPP·Python</p>
-      <a href="/posts/gnss-ppp-time-transfer/">阅读示例笔记</a>
+      <p class="project-meta">研究主题 · 论文与专利工作稿</p>
+      <h2>GNSS高精度授时</h2>
+      <p>围绕系统间偏差的溯源与温度滞后建模，梳理跨星座星载钟选择的研究思路。</p>
+      <p class="project-stack">方向：GNSS·PPP·时间互操作</p>
+      <a href="/posts/gnss-ppp-time-transfer/">阅读研究笔记</a>
     </div>
   </article>
 </div>
