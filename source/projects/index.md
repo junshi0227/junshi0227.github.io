@@ -21,7 +21,7 @@ date: 2026-09-29
     <div class="project-card-body">
       <p class="project-meta">课程项目 · 2025年4月</p>
       <h2>51单片机交通灯显示系统</h2>
-      <p>实现南北与东西方向的信号灯切换、LCD1602倒计时显示，以及夜间、紧急模式和按键调时。</p>
+      <p>对应课程限选题目C，实现双向三色灯、紧急全红与恢复、夜间黄闪和绿灯剩余时间显示，并加入手动调时。</p>
       <p class="project-stack">技术栈：AT89C52·C语言·LCD1602</p>
       <a href="/posts/51-traffic-light-system/">阅读项目记录</a>
     </div>
