@@ -14,6 +14,8 @@ description: 记录单片机课程中完成的双向交通灯显示系统：信�
 
 <!-- more -->
 
+![交通灯演示中南北绿灯、东西红灯的状态和LCD1602倒计时](/images/traffic-normal.jpg)
+
 ## 从固定配时开始
 
 项目使用KeilµVision的MCS-51工程，目标器件设置为AT89C52。程序将南北和东西方向分别抽象为红、黄、绿三种状态，用端口电平控制对应的LED。普通模式从“南北绿灯、东西红灯”开始，按倒计时推进灯色；源码中默认绿灯为5秒、黄灯为3秒，红灯初始值为8秒。
@@ -25,6 +27,15 @@ LCD1602的两行分别显示南北方向和东西方向的当前灯色与剩余�
 一组按键用于切换运行模式：夜间模式让两方向黄灯闪烁；紧急模式让两方向红灯常亮。在灯光更新逻辑里，紧急模式的判断排在夜间模式之前，体现了紧急状态优先处理的设计。
 
 另外两个按键用于调整配时。源码通过一个增减量改变南北方向的绿灯时长，并相应调整东西方向的绿灯与两方向的红灯时长。这样可以手动模拟车流量不均时的放行时间分配。地感线圈或视觉检测车流量是项目说明中提出的后续设想，当前版本仍由按键调节。
+
+## 演示视频里能看到什么
+
+视频中，普通模式下两组红黄绿LED随状态变化，LCD1602同时显示`NS Green`、`EW Red`等方向与灯色，以及各自的倒计时。按下模式按键后，屏幕依次出现`Night Mode / Yellow Blinking`和`Emergency Mode / Red always on`提示；画面中也能看到夜间模式的黄灯与紧急模式的红灯。视频后段还演示了通过按键改变倒计时数值。
+
+<div class="traffic-demo-gallery">
+  <figure><img src="/images/traffic-night.jpg" alt="交通灯夜间模式，LCD1602显示Night Mode和Yellow Blinking"><figcaption>夜间模式：黄灯闪烁</figcaption></figure>
+  <figure><img src="/images/traffic-emergency.jpg" alt="交通灯紧急模式，LCD1602显示Emergency Mode和Red always on"><figcaption>紧急模式：双向红灯常亮</figcaption></figure>
+</div>
 
 ## 复盘
 
