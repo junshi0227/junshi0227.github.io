@@ -3,9 +3,19 @@ title: 项目与研究
 date: 2026-09-29
 ---
 
-这里记录已经整理的课程项目与GNSS授时研究主题。
+这里记录已经整理的电赛项目、课程项目与GNSS授时研究主题。
 
 <div class="project-grid">
+  <article class="project-card project-card-featured">
+    <div class="project-cover project-cover-edc" role="img" aria-label="2026年电赛G题周期信号测量分析装置实物照片"><span>EDC·G</span></div>
+    <div class="project-card-body">
+      <p class="project-meta">团队项目 · 2026年电赛 · 三等奖</p>
+      <h2>周期信号测量分析装置</h2>
+      <p>负责硬件模块；团队设计了模拟低通、采集与抽取、频谱分析到结果显示的完整测量链路。</p>
+      <p class="project-stack">方向：模拟电路·FPGA·STM32G474</p>
+      <a href="/posts/2026-edc-periodic-signal-analyzer/">阅读项目记录</a>
+    </div>
+  </article>
   <article class="project-card">
     <div class="project-cover project-cover-traffic" role="img" aria-label="51单片机交通灯项目封面"><span>51·TRAFFIC</span></div>
     <div class="project-card-body">
