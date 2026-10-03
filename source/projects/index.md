@@ -3,17 +3,17 @@ title: 项目与研究
 date: 2026-09-29
 ---
 
-这里整理一个GNSS授时研究主题；PCB卡片仍是展示页面结构的示例，后续需要替换为真实项目。
+这里记录已经整理的课程项目与GNSS授时研究主题。
 
 <div class="project-grid">
   <article class="project-card">
-    <div class="project-cover project-cover-vision" role="img" aria-label="PCB检测示例项目封面，待替换为实际项目图片"><span>PCB·CV</span></div>
+    <div class="project-cover project-cover-traffic" role="img" aria-label="51单片机交通灯项目封面"><span>51·TRAFFIC</span></div>
     <div class="project-card-body">
-      <p class="project-meta">示例项目 · 时间待填写</p>
-      <h2>PCB缺陷检测</h2>
-      <p>示例简介：记录数据准备、目标检测模型训练、误检分析与部署过程。请用真实工作内容替换。</p>
-      <p class="project-stack">技术栈：Python·目标检测·图像处理</p>
-      <a href="/posts/pcb-defect-detection-notes/">阅读示例笔记</a>
+      <p class="project-meta">课程项目 · 2025年4月</p>
+      <h2>51单片机交通灯显示系统</h2>
+      <p>实现南北与东西方向的信号灯切换、LCD1602倒计时显示，以及夜间、紧急模式和按键调时。</p>
+      <p class="project-stack">技术栈：AT89C52·C语言·LCD1602</p>
+      <a href="/posts/51-traffic-light-system/">阅读项目记录</a>
     </div>
   </article>
   <article class="project-card">
