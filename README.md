@@ -1,10 +1,12 @@
 # Junshi Blog
 
+第一次自己维护博客，可先看[文章编辑与上线指南](BLOG_EDITING_GUIDE.md)；想系统补充内容，可按[博客内容充实清单](BLOG_CONTENT_CHECKLIST.md)逐项推进。
+
 这是按提供的执行说明搭建的Hexo静态博客，使用Redefine主题、Markdown文章、分类、标签、归档、站内搜索、代码高亮和按文章启用的数学公式。本站使用GitHub Pages从仓库自动构建。第一阶段不需要服务器或数据库。
 
 首页采用蓝调雪山横幅、居中标题和半透明导航；横幅配置在`_config.redefine.yml`。横幅下保留研究笔记式的项目摘要与文章列表，相关样式在`source/css/custom.css`，内容结构在`scripts/home-sections.js`。
 
-> **内容状态**：先打开 [PROFILE_TODO.md](PROFILE_TODO.md)，查看仍需替换的个人简介、示例文章和项目。初版内容只用来验证页面与写作流程。
+> **内容状态**：GNSS授时、电赛G题和51单片机交通灯已有实际项目记录；数字电路和PCB两篇仍是示例。具体待办见[博客内容充实清单](BLOG_CONTENT_CHECKLIST.md)。
 
 ## 目录
 
@@ -75,15 +77,15 @@ mathjax: true
 
 ## 4. GitHub Pages发布
 
-1. 在GitHub创建名为`junshi0227.github.io`的**空白公开仓库**，不要预先添加README。GitHub免费账户的Pages站点需要公开仓库；目前的文章和项目均明确标为展示样例。不要提交`.env`、密钥、`node_modules/`或`public/`；`.gitignore`已排除这些路径。
-2. 本工作目录已完成`git init`、首次提交和`origin`配置。确认`git remote -v`指向`https://github.com/junshi0227/junshi0227.github.io.git`，然后运行：
+1. 仓库[https://github.com/junshi0227/junshi0227.github.io](https://github.com/junshi0227/junshi0227.github.io)和GitHub Pages已经配置完成。不要提交`.env`、密钥、`node_modules/`、`public/`或`.gh-auth/`；`.gitignore`已排除这些路径。
+2. 本工作目录的`origin`已指向该仓库。使用完整的Git for Windows登录后，检查`git status`并推送：
 
    ```bash
    git push -u origin main
    ```
 
-   若从源码压缩包重新开始，应先初始化Git、设置提交姓名与邮箱、提交文件，再添加相同的远端地址。
-3. 在仓库的**Settings → Pages → Build and deployment → Source**选择**GitHub Actions**。`.github/workflows/pages.yml`会在每次推送到`main`后执行`npm ci`和`npm run build`，并发布`public/`。
+   这一步前应先`git add`和`git commit`。本机若使用便携Git时遇到HTTPS组件错误，可改用GitHub网页编辑或完整的Git for Windows，详见[编辑与上线指南](BLOG_EDITING_GUIDE.md)。
+3. 仓库的**Settings → Pages → Build and deployment → Source**已选择**GitHub Actions**。`.github/workflows/pages.yml`会在每次推送到`main`后执行`npm ci`和`npm run build`，并发布`public/`。
 4. 在仓库的**Actions**标签页查看部署状态。成功后打开[https://junshi0227.github.io/](https://junshi0227.github.io/)；若稍有延迟，稍后刷新。
 5. 后续更新文章：本地预览、构建检查、提交并推送`main`。如需自定义域名，先在仓库Settings → Pages中添加域名，再按GitHub提示配置DNS，最后把两个配置文件的`url`改成正式域名。
 
