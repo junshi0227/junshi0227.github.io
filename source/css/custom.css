@@ -112,7 +112,9 @@ body, .page-container { background: var(--blog-bg) !important; }
 }
 
 .blog-project-bottom, .blog-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-.scroll-progress-bar { transition: width .18s ease-out; }
+.visible-tools-list .blog-page-count-button { width: auto; min-width: 42px; padding: 0 .35rem; }
+.blog-page-count { font-size: .76rem; font-weight: 750; letter-spacing: -.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.right-side-tools-container.hide { opacity: 1 !important; pointer-events: auto !important; }
 
 .blog-home-projects { margin-top: 4.2rem; }
 .blog-section-heading { align-items: end; padding: 1rem 0 1.4rem; border-top: 1px solid var(--blog-ink); }
