@@ -6,7 +6,7 @@
 
 首页采用蓝调雪山横幅、居中标题和半透明导航；横幅配置在`_config.redefine.yml`。横幅下保留研究笔记式的项目摘要与文章列表，相关样式在`source/css/custom.css`，内容结构在`scripts/home-sections.js`。
 
-> **内容状态**：GNSS授时、电赛G题和51单片机交通灯已有实际项目记录；数字电路和PCB两篇仍是示例。具体待办见[博客内容充实清单](BLOG_CONTENT_CHECKLIST.md)。
+> **内容状态**：GNSS授时、电赛G题、51单片机交通灯和2025年数模B题已有实际项目记录；数字电路和PCB两篇仍是示例。具体待办见[博客内容充实清单](BLOG_CONTENT_CHECKLIST.md)。
 
 ## 目录
 

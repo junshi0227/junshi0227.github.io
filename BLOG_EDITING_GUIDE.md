@@ -10,7 +10,7 @@
 | 新增文章 | 在`source/_posts/`新建`.md`文件 |
 | 关于页、微信和B站联系卡片 | `source/about/index.md` |
 | 项目列表的文字与链接 | `source/projects/index.md` |
-| 首页代表项目三张卡片 | `scripts/home-sections.js` |
+| 首页代表项目卡片 | `scripts/home-sections.js` |
 | 首页标题、背景、导航、头像路径、社交图标 | `_config.redefine.yml` |
 | 站点名称、网址、文章链接格式 | `_config.yml` |
 | 图片素材 | `source/images/` |
@@ -121,7 +121,7 @@ mathjax: false
 
 ### 修改项目或首页
 
-普通新文章只需添加`source/_posts/`下的文件，首页“最近记录”、归档、分类和标签会自动更新。项目展示页是手工维护的；要新增项目卡片，请同时编辑`source/projects/index.md`。首页“研究与项目”三张代表卡片也由`scripts/home-sections.js`手工维护，只有希望它成为代表项目时才需要改这里。
+普通新文章只需添加`source/_posts/`下的文件，首页“最近记录”、归档、分类和标签会自动更新。项目展示页是手工维护的；要新增项目卡片，请同时编辑`source/projects/index.md`。首页“研究与项目”代表卡片也由`scripts/home-sections.js`手工维护，只有希望它成为代表项目时才需要改这里。
 
 ## 上线后的检查
 

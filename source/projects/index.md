@@ -16,6 +16,16 @@ date: 2026-09-29
       <a href="/posts/2026-edc-periodic-signal-analyzer/">阅读项目记录</a>
     </div>
   </article>
+  <article class="project-card project-card-featured project-card-modeling">
+    <div class="project-cover project-cover-modeling" role="img" aria-label="2025年数学建模竞赛B题红外干涉光谱与薄膜厚度反演项目封面"><span>MATH·MODEL</span></div>
+    <div class="project-card-body">
+      <p class="project-meta">团队项目 · 2025年数模 · 北京市二等奖</p>
+      <h2>从红外光谱反演薄膜厚度</h2>
+      <p>负责编程与数据分析；围绕光谱预处理、FFT周期提取、峰值法对照及多光束模型，复盘厚度估计与模型不确定性。</p>
+      <p class="project-stack">方向：Python·信号处理·参数估计</p>
+      <a href="/posts/2025-math-modeling-sic-film-thickness/">阅读项目复盘</a>
+    </div>
+  </article>
   <article class="project-card">
     <div class="project-cover project-cover-traffic" role="img" aria-label="51单片机交通灯项目封面"><span>51·TRAFFIC</span></div>
     <div class="project-card-body">

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">2025数模B题数据分析流程</title>
+  <desc id="desc">从原始光谱，经过有效波段筛选、双路径厚度估计，到多光束模型与不确定度复核。</desc>
+  <defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#102b40"/><stop offset="1" stop-color="#326878"/></linearGradient></defs>
+  <rect width="1200" height="430" rx="22" fill="url(#g)"/>
+  <text x="56" y="60" fill="#f4b99e" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="3">2025 CUMCM · PROBLEM B</text>
+  <text x="56" y="112" fill="#fff" font-family="Microsoft YaHei,Arial,sans-serif" font-size="35" font-weight="700">从红外光谱到外延层厚度</text>
+  <text x="57" y="146" fill="#c3d9df" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17">数据检查 → 周期提取 → 模型选择 → 结果复核</text>
+  <g fill="#fff" fill-opacity=".09" stroke="#fff" stroke-opacity=".22"><rect x="56" y="194" width="244" height="170" rx="16"/><rect x="336" y="194" width="244" height="170" rx="16"/><rect x="616" y="194" width="244" height="170" rx="16"/><rect x="896" y="194" width="248" height="170" rx="16"/></g>
+  <path d="M302 280h31m249 0h31m249 0h31" stroke="#b5d5d7" stroke-width="3"/>
+  <g font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#f4b99e" letter-spacing="2"><text x="78" y="229">01 / INPUT</text><text x="358" y="229">02 / FILTER</text><text x="638" y="229">03 / ESTIMATE</text><text x="918" y="229">04 / REVIEW</text></g>
+  <g font-family="Microsoft YaHei,Arial,sans-serif" font-size="25" font-weight="700" fill="#fff"><text x="78" y="274">原始光谱</text><text x="358" y="274">有效波段</text><text x="638" y="274">双路径估计</text><text x="918" y="274">模型复核</text></g>
+  <g font-family="Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#d1e1e3"><text x="78" y="315">SiC / Si · 10° / 15°</text><text x="358" y="315">识别异常波段</text><text x="638" y="315">峰值间隔法 + FFT</text><text x="918" y="315">Airy模型 · 残差</text><text x="918" y="340">参数敏感性与不确定度</text></g>
+</svg>
