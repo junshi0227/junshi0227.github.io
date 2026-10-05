@@ -3,6 +3,7 @@ public/
 db.json
 .deploy_git/
 .cache/
+.gh-auth/
 .env
 .env.*
 !.env.example
