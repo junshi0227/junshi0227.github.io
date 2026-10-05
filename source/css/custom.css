@@ -195,6 +195,23 @@ body, .page-container { background: var(--blog-bg) !important; }
 .article-content.markdown-body h3 { color: var(--blog-ink); font-size: 1.25rem; }
 .article-content.markdown-body { line-height: 1.85; }
 
+/* Keep tag frequency visible without letting a small count difference dominate the page. */
+.tagcloud-content:has(> a) { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .75rem; padding: 1.3rem 0 .5rem; text-align: center; }
+.tagcloud-content > a { display: inline-flex !important; align-items: center; min-height: 2.8rem; margin: 0 !important; padding: .62rem 1rem !important; border: 1px solid currentColor; border-radius: 999px !important; background: var(--tag-fill) !important; color: var(--tag-ink) !important; font-size: 1.04rem !important; font-weight: 600; line-height: 1.35 !important; text-decoration: none !important; transition: transform .2s ease, box-shadow .2s ease; }
+.tagcloud-content > a[style*="5rem"] { font-size: 1.16rem !important; font-weight: 750; }
+.tagcloud-content > a:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(17, 37, 47, .12); }
+.tagcloud-content > a:focus-visible { outline: 2px solid var(--blog-accent); outline-offset: 3px; }
+.tagcloud-content > a:nth-child(5n + 1) { --tag-ink: #315e69; --tag-fill: #e7f1f2; }
+.tagcloud-content > a:nth-child(5n + 2) { --tag-ink: #825a40; --tag-fill: #f5ece3; }
+.tagcloud-content > a:nth-child(5n + 3) { --tag-ink: #7c3f4c; --tag-fill: #f6e9ed; }
+.tagcloud-content > a:nth-child(5n + 4) { --tag-ink: #566442; --tag-fill: #edf2e5; }
+.tagcloud-content > a:nth-child(5n + 5) { --tag-ink: #514d78; --tag-fill: #eeedf7; }
+.dark .tagcloud-content > a:nth-child(5n + 1) { --tag-ink: #b7dce2; --tag-fill: #203a43; }
+.dark .tagcloud-content > a:nth-child(5n + 2) { --tag-ink: #e7c6a9; --tag-fill: #3b302a; }
+.dark .tagcloud-content > a:nth-child(5n + 3) { --tag-ink: #efbecb; --tag-fill: #422e36; }
+.dark .tagcloud-content > a:nth-child(5n + 4) { --tag-ink: #cadba9; --tag-fill: #323c2d; }
+.dark .tagcloud-content > a:nth-child(5n + 5) { --tag-ink: #cfc8ed; --tag-fill: #302f47; }
+
 /* Contact area on the About page. */
 #contact, #wechat { scroll-margin-top: 6rem; }
 .contact-lead { color: var(--blog-muted); margin-bottom: 1.4rem !important; }
