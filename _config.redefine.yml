@@ -50,10 +50,15 @@ home_banner:
     links:
       - icon: github
         url: https://github.com/junshi0227
+      - icon: fa-brands fa-bilibili
+        url: https://b23.tv/KPwvyon
       - icon: fa-solid fa-link
         url: /about/
       - icon: fa-regular fa-folder-open
         url: /projects/
+    qrs:
+      - icon: fa-brands fa-weixin
+        qr: /images/wechat-qr.jpg
 navbar:
   color:
     left: '#f7f8f7'
