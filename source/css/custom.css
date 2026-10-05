@@ -112,6 +112,7 @@ body, .page-container { background: var(--blog-bg) !important; }
 }
 
 .blog-project-bottom, .blog-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.scroll-progress-bar { transition: width .18s ease-out; }
 
 .blog-home-projects { margin-top: 4.2rem; }
 .blog-section-heading { align-items: end; padding: 1rem 0 1.4rem; border-top: 1px solid var(--blog-ink); }

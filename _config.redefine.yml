@@ -12,6 +12,9 @@ colors:
   default_mode: light
 global:
   content_max_width: 1080px
+  scroll_progress:
+    bar: true
+    percentage: false
   hover:
     shadow: true
     scale: false
