@@ -10,6 +10,7 @@ tags:
   - 数据分析
   - FFT
 description: 2025年全国大学生数学建模竞赛B题，北京市二等奖。记录我负责的编程与数据分析工作，以及光谱预处理、厚度反演和模型可靠性复盘。
+thumbnail: /images/modeling-sic-cover.svg
 mathjax: true
 ---
 

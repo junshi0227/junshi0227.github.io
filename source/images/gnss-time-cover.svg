@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">GNSS时间互操作主题插图</title>
+  <desc id="desc">地球弧面、卫星轨迹和时间信号的示意插图。</desc>
+  <defs>
+    <linearGradient id="sky" x2="1" y2="1"><stop stop-color="#0d2234"/><stop offset=".55" stop-color="#1a3d58"/><stop offset="1" stop-color="#466d76"/></linearGradient>
+    <linearGradient id="earth" x2="0" y2="1"><stop stop-color="#65b6bf"/><stop offset=".17" stop-color="#254f66"/><stop offset="1" stop-color="#071c31"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#a9e2dc" stop-opacity=".4"/><stop offset="1" stop-color="#a9e2dc" stop-opacity="0"/></radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="25"/></filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="845" cy="180" r="285" fill="url(#glow)"/>
+  <g fill="#c9e6e4" opacity=".62"><circle cx="114" cy="96" r="2"/><circle cx="291" cy="58" r="1.5"/><circle cx="496" cy="128" r="2"/><circle cx="698" cy="66" r="1.5"/><circle cx="1035" cy="78" r="2"/><circle cx="1108" cy="302" r="1.5"/><circle cx="160" cy="310" r="1.5"/><circle cx="945" cy="380" r="1.5"/></g>
+  <path d="M-70 620C95 358 332 197 648 186c207-8 396 45 606 167" fill="none" stroke="#8acbd0" stroke-opacity=".36" stroke-width="2" stroke-dasharray="8 12"/>
+  <path d="M16 578C207 272 505 151 827 212c147 28 266 86 389 178" fill="none" stroke="#f5c6ad" stroke-opacity=".34" stroke-width="2" stroke-dasharray="5 11"/>
+  <g stroke="#c9e9e7" stroke-width="2" fill="none" opacity=".8">
+    <path d="M346 224l-19-18-20 5-10 20 18 18 21-5z"/><path d="M301 208l-25-19m76 61 25 20m-77-47-43 14m95-18 43-14"/>
+    <path d="M824 121l-16-17-21 4-11 19 16 17 21-4z"/><path d="M782 104l-25-20m66 59 24 20m-71-42-40 13m94-17 40-13"/>
+    <path d="M1044 300l-17-17-20 5-10 19 17 17 21-5z"/><path d="M1001 284l-25-18m67 58 25 19m-70-43-43 14m94-19 42-14"/>
+  </g>
+  <g fill="none" stroke="#b4e9dc" stroke-opacity=".58"><path d="M322 242Q445 305 486 433"/><path d="M799 143Q703 282 648 422"/><path d="M1020 321Q874 320 757 442"/></g>
+  <circle cx="600" cy="874" r="560" fill="url(#earth)" stroke="#85cbd0" stroke-opacity=".9" stroke-width="3"/>
+  <ellipse cx="600" cy="437" rx="477" ry="59" fill="none" stroke="#a9dce0" stroke-opacity=".2" stroke-width="2"/>
+  <path d="M99 489q504 152 1002 1M141 552q472 103 917 0M316 405q-26 92-19 178m338-197q31 78 39 198m237-159q-31 69-44 155" fill="none" stroke="#a9dce0" stroke-opacity=".16" stroke-width="2"/>
+  <circle cx="603" cy="419" r="64" fill="#c5eee3" opacity=".25" filter="url(#blur)"/>
+  <circle cx="603" cy="419" r="9" fill="#f5d9bd"/><circle cx="603" cy="419" r="21" fill="none" stroke="#f5d9bd" stroke-opacity=".75" stroke-width="2"/>
+  <path d="M603 397v-14m0 72v-14m-36-22h14m44 0h14" stroke="#f5d9bd" stroke-width="2"/>
+</svg>

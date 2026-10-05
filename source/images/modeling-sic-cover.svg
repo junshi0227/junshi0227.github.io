@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">红外光谱与薄膜厚度反演主题插图</title>
+  <desc id="desc">红外干涉曲线、入射与反射光线、外延层截面的示意插图。</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#132b3f"/><stop offset=".55" stop-color="#255469"/><stop offset="1" stop-color="#688a83"/></linearGradient>
+    <linearGradient id="film" x2="0" y2="1"><stop stop-color="#9bd5c7"/><stop offset="1" stop-color="#437f8b"/></linearGradient>
+    <linearGradient id="wafer" x2="0" y2="1"><stop stop-color="#27485f"/><stop offset="1" stop-color="#0d2037"/></linearGradient>
+    <linearGradient id="beam" x2="0" y2="1"><stop stop-color="#ffe6be"/><stop offset="1" stop-color="#f4ad86"/></linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <g stroke="#d7ecdf" stroke-opacity=".12" stroke-width="1"><path d="M0 120h1200M0 230h1200M0 340h1200M0 450h1200M0 560h1200"/><path d="M130 0v675M270 0v675M410 0v675M550 0v675M690 0v675M830 0v675M970 0v675M1110 0v675"/></g>
+  <path d="M0 266C65 266 82 188 139 188s76 145 133 145 69-160 128-160 74 146 132 146 70-117 129-117 75 104 133 104 70-87 129-87 78 65 137 65 79-36 140-36" fill="none" stroke="#f5b594" stroke-width="5" stroke-linecap="round" opacity=".92"/>
+  <path d="M0 282C65 282 82 204 139 204s76 145 133 145 69-160 128-160 74 146 132 146 70-117 129-117 75 104 133 104 70-87 129-87 78 65 137 65 79-36 140-36" fill="none" stroke="#ffd8b0" stroke-opacity=".2" stroke-width="20"/>
+  <g fill="#ffe2ba"><circle cx="139" cy="188" r="7"/><circle cx="400" cy="173" r="7"/><circle cx="661" cy="202" r="7"/><circle cx="923" cy="219" r="7"/></g>
+  <path d="M415 0l222 374" fill="none" stroke="url(#beam)" stroke-width="10" stroke-opacity=".92"/>
+  <path d="M637 374L910 18" fill="none" stroke="url(#beam)" stroke-width="7" stroke-opacity=".8"/>
+  <path d="M637 374l79 87 206-311" fill="none" stroke="#f8d6ad" stroke-width="4" stroke-opacity=".56"/>
+  <path d="M0 373h1200v87H0z" fill="url(#film)"/><path d="M0 460h1200v215H0z" fill="url(#wafer)"/>
+  <path d="M0 373h1200M0 460h1200" stroke="#c4eee1" stroke-opacity=".8" stroke-width="3"/>
+  <g stroke="#b5e1df" stroke-opacity=".22" stroke-width="2"><path d="M0 414h1200M0 510h1200M0 560h1200M0 610h1200"/><path d="M100 460l-80 215m260-215-80 215m260-215-80 215m260-215-80 215m260-215-80 215m260-215-80 215"/></g>
+  <path d="M111 372v88m-12-88h24m-24 88h24" stroke="#fff2d8" stroke-width="3"/>
+  <circle cx="637" cy="373" r="8" fill="#fff2d8"/>
+</svg>
