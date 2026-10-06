@@ -29,8 +29,8 @@ home_banner:
   enable: true
   style: fixed
   image:
-    light: /images/blue-hour-fuji.jpg
-    dark: /images/blue-hour-fuji.jpg
+    light: /images/blue-hour-fuji-2560.jpg
+    dark: /images/blue-hour-fuji-2560.jpg
   title: Jun·Keep Learning
   subtitle:
     text:
@@ -122,6 +122,7 @@ articles:
 footer:
   runtime: false
   icon: ''
+  start: 2026/09/29 00:00:00
   statistics: false
   customize: 科研、项目与学习笔记
 page_templates:

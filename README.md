@@ -6,7 +6,7 @@
 
 首页采用蓝调雪山横幅、居中标题和半透明导航；横幅配置在`_config.redefine.yml`。横幅下保留研究笔记式的项目摘要与文章列表，相关样式在`source/css/custom.css`，内容结构在`scripts/home-sections.js`。
 
-> **内容状态**：GNSS授时、电赛G题、51单片机交通灯和2025年数模B题已有实际项目记录；数字电路和PCB两篇仍是示例。具体待办见[博客内容充实清单](BLOG_CONTENT_CHECKLIST.md)。
+> **内容状态**：目前公开GNSS授时、电赛G题、51单片机交通灯和2025年数模B题四篇实际经历文章；排版示例文章已移除。具体待办见[博客内容充实清单](BLOG_CONTENT_CHECKLIST.md)。
 
 ## 目录
 
@@ -98,4 +98,4 @@ GitHub Pages不需要提交`public/`。自动部署参考[Hexo官方说明](http
 → npm run build检查 → git add/commit/push → GitHub Pages自动上线
 ```
 
-本项目已生成 `404.html` 和 `robots.txt`。RSS、sitemap、评论、访问统计可在内容稳定后再加；启用前应核对真实域名与隐私设置。
+本项目已生成`404.html`、`robots.txt`和随文章自动更新的`sitemap.xml`。RSS、评论和访问统计可按需要增加；绑定自定义域名时，同步更新`_config.yml`中的网址与`source/robots.txt`中的站点地图地址。

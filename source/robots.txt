@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://junshi0227.github.io/sitemap.xml

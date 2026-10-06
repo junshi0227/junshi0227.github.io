@@ -1,17 +1,14 @@
-# 发布前需要填写的个人资料
+# 个人资料后续完善项
 
-这个文件集中列出仍需核对或替换的内容。数字电路和PCB文章是排版示例，不能作为真实经历使用；电赛、交通灯、GNSS和数模文章已根据现有材料整理，仍可继续补充证据与细节。
+博客已经公开四篇实际研究与项目文章，数字电路和PCB排版示例已移除。“关于我”页面依据现有项目记录说明了研究方向、竞赛经历和个人分工。
 
-| 项目 | 当前占位内容 | 修改位置 |
+| 项目 | 当前状态与后续选择 | 修改位置 |
 | --- | --- | --- |
-| 站点名称、首页标题、作者 | `Junshi Blog`、`Jun·Keep Learning`、`君军均俊钧` | `_config.yml`、`_config.redefine.yml`；可按喜好修改 |
-| 站点地址 | `https://junshi0227.github.io` | 两个配置文件中的`url`；绑定自定义域名后再改为正式域名 |
-| 个人简介 | 概括性示例文字 | `source/about/index.md`、`scripts/home-sections.js` |
-| 联系方式 | GitHub、B站和微信二维码已填写，邮箱未公开 | `source/about/index.md`；首页图标在`_config.redefine.yml`，按需添加公开邮箱 |
-| 头像 | 已使用用户提供的星空照片 | `source/images/avatar.jpg`，通过`_config.redefine.yml`中的`defaults.avatar`引用 |
-| 首页背景 | 壁纸文件夹中的蓝调雪山照片 | `_config.redefine.yml`中的`home_banner.image`；原森林光影图保留在`source/images/forest-light.jpg`备用 |
-| 项目经历、时间、结果 | 电赛G题、交通灯课程项目、GNSS研究主题及2025年数模B题已整理；数模奖项与分工按用户提供信息填写 | `source/projects/index.md`、`scripts/home-sections.js`、对应文章 |
-| 文章 | 电赛G题、GNSS笔记、交通灯项目与数模B题已依据源文件整理；PCB和数字电路仍为示例文章 | `source/_posts/`；替换或删除示例后发布 |
-| 项目封面 | 颜色块封面 | `source/projects/index.md`、`source/css/custom.css`；可换成压缩后的真实图片 |
+| 学校、专业、学习阶段 | 现有材料没有可靠信息；愿意公开时再补 | `source/about/index.md` |
+| 当前研究重点 | 已介绍GNSS授时及已有项目；后续可补正在推进的具体问题 | `source/about/index.md` |
+| 联系方式 | GitHub、B站和微信二维码已公开；公开邮箱可按需增加 | `source/about/index.md`、`_config.redefine.yml` |
+| 论文与专利 | 目前按研究工作和方案撰稿表述；有正式公开信息后再补链接 | `source/_posts/gnss-ppp-time-transfer.md` |
+| 项目证据 | 可继续补充允许公开的代码、报告片段、实验图和演示链接 | `source/_posts/`、`source/projects/index.md` |
+| 独立域名 | 当前使用`junshi0227.github.io`；购买并绑定域名后更新站点网址和站点地图声明 | `_config.yml`、`_config.redefine.yml`、`source/robots.txt` |
 
-替换后运行 `npm run build`，再检查 `public/` 中的页面。
+修改后运行`npm run build`，检查本地页面，再提交并推送到GitHub。
