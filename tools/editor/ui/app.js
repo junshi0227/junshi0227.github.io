@@ -5,13 +5,19 @@ let posts = [];
 let current = null;
 let dirty = false;
 let working = false;
-let previewPort = 4002;
 let toastTimer;
 let bodyDirty = false;
 let originalBody = '';
 
+if (!window.toastui?.Editor) {
+  $('notice').hidden = false;
+  $('notice').textContent = '排版编辑器加载失败。请检查本机依赖是否安装完成，再刷新页面。';
+  throw Error('TOAST UI Editor未加载');
+}
+
 const editor = new toastui.Editor({
-  el: $('editor'), height: '620px', initialEditType: 'wysiwyg', hideModeSwitch: true,
+  el: $('editor'), height: '720px', minHeight: '620px', initialEditType: 'wysiwyg', hideModeSwitch: true,
+  placeholder: '从这里开始写正文…',
   previewStyle: 'vertical', language: 'zh-CN', usageStatistics: false,
   toolbarItems: [['heading', 'bold', 'italic', 'strike'], ['hr', 'quote'], ['ul', 'ol', 'task'], ['table', 'image', 'link'], ['code', 'codeblock']],
   hooks: { addImageBlobHook: async (blob, callback) => {
@@ -28,6 +34,11 @@ function toast(message, error = false) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => node.classList.remove('show'), 5000);
 }
+function notice(message) {
+  const node = $('notice');
+  node.textContent = message;
+  node.hidden = !message;
+}
 function setDirty(value) { dirty = value; $('save-state').textContent = value ? '有未保存修改' : '已保存'; }
 function formatLocal(date) {
   const d = date || new Date();
@@ -35,7 +46,6 @@ function formatLocal(date) {
   return `${d.getFullYear()}-${p(d.getMonth()+1)}T${p(d.getDate())}:${p(d.getHours())}`;
 }
 function splitLabels(value) { return value.split(/[,，、]/).map(x => x.trim()).filter(Boolean); }
-function slugify(value) { return value.toLowerCase().trim().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70); }
 async function api(path, options = {}) {
   const headers = { ...(options.headers || {}) };
   if (options.method === 'POST') headers['X-Blog-Editor-Token'] = token;
@@ -70,6 +80,7 @@ function fill(post) {
   $('slug').value = post?.slug || '';
   $('slug').disabled = Boolean(post?.id);
   $('date').value = post?.date ? post.date.slice(0, 16).replace(' ', 'T') : formatLocal();
+  $('paper-date').textContent = $('date').value.slice(0, 10);
   $('description').value = post?.description || '';
   $('categories').value = (post?.categories || []).join('，');
   $('tags').value = (post?.tags || []).join('，');
@@ -80,6 +91,8 @@ function fill(post) {
   originalBody = post?.body || '';
   bodyDirty = false;
   setDirty(false);
+  notice('');
+  $('publish-result').hidden = true;
   renderList();
 }
 async function confirmSwitch() {
@@ -105,7 +118,7 @@ async function perform(label, work) {
   for (const button of document.querySelectorAll('.top-actions button,.bottom-actions button')) button.disabled = true;
   $('save-state').textContent = label;
   try { await work(); }
-  catch (error) { toast(error.message, true); $('save-state').textContent = dirty ? '有未保存修改' : '操作未完成'; }
+  catch (error) { toast(error.message, true); notice(error.message); $('save-state').textContent = dirty ? '有未保存修改' : '操作未完成'; }
   finally { working = false; for (const button of document.querySelectorAll('.top-actions button,.bottom-actions button')) button.disabled = false; }
 }
 async function save(status) {
@@ -118,8 +131,10 @@ async function save(status) {
 }
 
 for (const id of fields) $(id).addEventListener('input', () => { setDirty(true); if (id === 'thumbnail') showCover(); });
+$('date').addEventListener('input', () => { $('paper-date').textContent = $('date').value.slice(0, 10); });
 editor.on('change', () => { bodyDirty = true; setDirty(true); });
 $('new-post').onclick = async () => { if (await confirmSwitch()) fill(null); };
+$('settings-shortcut').onclick = () => { $('post-settings').open = true; $('post-settings').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 $('save').onclick = () => perform('正在保存…', () => save(current?.status || 'draft'));
 $('save-draft').onclick = () => perform('正在保存草稿…', () => save('draft'));
 $('cover-upload').onchange = async event => {
@@ -128,25 +143,26 @@ $('cover-upload').onchange = async event => {
   catch (error) { toast(error.message, true); }
   event.target.value = '';
 };
-$('preview').onclick = () => perform('正在生成预览…', async () => {
-  const post = await save(current?.status || 'draft');
-  if (!post) return;
-  if (post.status === 'draft') { toast('草稿已保存。正式网站预览需要先将文章设为已发布；当前编辑区可以直接查看排版。'); return; }
-  await api('/api/preview', { method: 'POST' });
-  window.open(`http://127.0.0.1:${previewPort}/posts/${post.slug}/`, '_blank', 'noopener');
-  $('save-state').textContent = '预览已打开';
-});
+function escapeHTML(value) { return String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]); }
+$('preview').onclick = () => {
+  const title = escapeHTML($('title').value.trim() || '未命名文章');
+  const date = escapeHTML($('date').value.slice(0, 10));
+  const content = editor.getHTML();
+  $('preview-frame').srcdoc = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src http: https: data:; style-src 'unsafe-inline'"><style>body{max-width:760px;margin:58px auto;padding:0 30px;font:17px/1.85 system-ui,'Microsoft YaHei',sans-serif;color:#273d39}h1{font-size:36px;line-height:1.3;margin:0 0 12px}h2,h3{line-height:1.4;margin-top:1.7em}small{color:#8ca099}hr{border:0;border-top:1px solid #e2e8e3;margin:30px 0}img{max-width:100%;height:auto;border-radius:8px}pre{overflow:auto;background:#f3f5f3;padding:16px;border-radius:8px}blockquote{border-left:3px solid #2c6d60;padding-left:18px;color:#62736e}table{border-collapse:collapse;width:100%}th,td{border:1px solid #dce4df;padding:8px;text-align:left}a{color:#276d61}</style></head><body><h1>${title}</h1><small>${date}</small><hr>${content}</body></html>`;
+  $('preview-dialog').showModal();
+};
+$('close-preview').onclick = () => $('preview-dialog').close();
 $('publish').onclick = () => perform('正在构建并推送…', async () => {
   const post = await save('post');
   if (!post) return;
-  const result = await api('/api/publish', { method: 'POST' });
+  await api('/api/publish', { method: 'POST' });
   $('save-state').textContent = '已推送，等待GitHub构建';
   toast(`《${post.title}》已推送。GitHub Pages构建完成后即可在线查看。`);
-  window.open(result.actions, '_blank', 'noopener');
+  $('publish-result').hidden = false;
 });
 window.addEventListener('beforeunload', event => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
 
 (async () => {
-  try { const init = await api('/api/init'); token = init.token; posts = init.posts; previewPort = init.previewPort; renderList(); fill(null); }
+  try { const init = await api('/api/init'); token = init.token; posts = init.posts; renderList(); fill(null); }
   catch (error) { toast(`无法加载文章：${error.message}`, true); }
 })();

@@ -7,7 +7,8 @@
     "clean": "hexo clean",
     "build": "hexo generate",
     "new": "hexo new",
-    "editor": "node tools/editor/server.cjs"
+    "editor": "node tools/editor/server.cjs",
+    "test:editor": "node --test tools/editor/ui/preview.test.cjs"
   },
   "private": true,
   "engines": {
@@ -31,5 +32,8 @@
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-theme-redefine": "^2.9.0"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
   }
 }
