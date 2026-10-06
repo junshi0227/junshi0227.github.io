@@ -1,5 +1,7 @@
 # 博客文章编辑与上线指南
 
+不想手写Markdown时，直接使用[可视化写作台](VISUAL_EDITOR_GUIDE.md)；本文件保留手动编辑源文件的方法。
+
 适用于本仓库`junshi0227/junshi0227.github.io`。这是一个Hexo博客：编辑`source/`里的源文件，推送到`main`后，GitHub Actions自动生成并部署网站。线上地址是[https://junshi0227.github.io/](https://junshi0227.github.io/)。
 
 ## 先找对要修改的文件

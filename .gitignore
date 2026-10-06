@@ -3,6 +3,7 @@ public/
 db.json
 .deploy_git/
 .cache/
+source/_drafts/
 .gh-auth/
 .env
 .env.*
