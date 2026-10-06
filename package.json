@@ -6,12 +6,19 @@
     "dev": "hexo server",
     "clean": "hexo clean",
     "build": "hexo generate",
-    "new": "hexo new"
+    "new": "hexo new",
+    "editor": "node tools/editor/server.cjs"
   },
   "private": true,
-  "engines": {"node": ">=20"},
-  "hexo": {"version": "8.1.2"},
+  "engines": {
+    "node": ">=20"
+  },
+  "hexo": {
+    "version": "8.1.2"
+  },
   "dependencies": {
+    "@toast-ui/editor": "^3.2.2",
+    "gray-matter": "^4.0.3",
     "hexo": "^8.1.2",
     "hexo-filter-mathjax": "^0.11.1",
     "hexo-generator-archive": "^2.0.0",
