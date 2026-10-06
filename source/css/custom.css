@@ -135,7 +135,7 @@ body, .page-container { background: var(--blog-bg) !important; }
 .blog-project-mini-featured .blog-project-no em { color: rgba(255, 255, 255, .78); }
 .blog-project-mini-featured small { max-width: 35rem; }
 .blog-project-mini-traffic { background: linear-gradient(90deg, rgba(9, 24, 31, .92), rgba(9, 24, 31, .48)), url('/images/traffic-normal.jpg') center/cover; }
-.blog-project-mini-gnss { background: linear-gradient(90deg, rgba(9, 24, 40, .86), rgba(9, 24, 40, .14)), url('/images/gnss-time-cover.svg') center/cover; }
+.blog-project-mini-gnss { background: linear-gradient(90deg, rgba(9, 24, 40, .88), rgba(9, 24, 40, .14)), url('/images/gnss-ppt-cover.png') center/cover; }
 .blog-project-mini-modeling { grid-column: 1 / -1; min-height: 235px; background: linear-gradient(90deg, rgba(13, 34, 51, .9), rgba(13, 34, 51, .12)), url('/images/modeling-sic-cover.svg') center/cover; }
 .blog-project-mini-traffic, .blog-project-mini-gnss, .blog-project-mini-modeling { border-color: rgba(255, 255, 255, .18); }
 .blog-project-mini-traffic .blog-project-no, .blog-project-mini-traffic strong, .blog-project-mini-traffic small, .blog-project-mini-traffic .blog-project-bottom, .blog-project-mini-traffic .blog-project-bottom b,
@@ -169,7 +169,7 @@ body, .page-container { background: var(--blog-bg) !important; }
 .traffic-demo-gallery figure { margin: 0; }
 .traffic-demo-gallery img { width: 100%; height: auto; display: block; border-radius: 12px; }
 .traffic-demo-gallery figcaption { margin-top: .4rem; color: var(--second-text-color, #67717b); font-size: .85rem; text-align: center; }
-.project-cover-gnss { background: linear-gradient(0deg, rgba(9, 24, 40, .72), transparent 68%), url('/images/gnss-time-cover.svg') center/cover; }
+.project-cover-gnss { background: linear-gradient(0deg, rgba(9, 24, 40, .72), transparent 68%), url('/images/gnss-ppt-cover.png') center/cover; }
 .project-cover-modeling { background: linear-gradient(0deg, rgba(9, 24, 40, .65), transparent 68%), url('/images/modeling-sic-cover.svg') center/cover; }
 .project-card-body { padding: 1.35rem 1.5rem 1.6rem; }
 .project-card-body h2 { font-size: 1.28rem !important; margin: .45rem 0 .65rem !important; font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif; }

@@ -37,7 +37,7 @@ date: 2026-09-29
     </div>
   </article>
   <article class="project-card">
-    <div class="project-cover project-cover-gnss" role="img" aria-label="GNSS授时研究主题封面"><span>GNSS·PPP</span></div>
+    <div class="project-cover project-cover-gnss" role="img" aria-label="答辩PPT中的GNSS地球与卫星轨道示意图"><span>GNSS·PPP</span></div>
     <div class="project-card-body">
       <p class="project-meta">研究主题 · 论文与专利工作稿</p>
       <h2>GNSS高精度授时</h2>
