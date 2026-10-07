@@ -19,6 +19,12 @@
 .paper .toastui-editor-ww-container{background:#fff}
 .paper .toastui-editor-contents{font-size:16px;line-height:1.9;color:#283f3b;padding:24px 8px 40px}
 .paper .toastui-editor-contents p{margin:0 0 1em}
+.word-button{border:1px solid #62817a;background:transparent;color:#e5efe9;border-radius:12px;padding:12px 13px;text-align:left;font-weight:700;margin:-17px 0 27px}
+.word-button:hover{background:#28514d}
+.word-surface[hidden]{display:none}
+.word-mode-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#eef5f0;border-radius:9px;padding:12px 15px;margin-bottom:18px;color:#42665b;font-size:12px;line-height:1.6}
+.word-mode-bar a{color:#246b5d;font-weight:700;margin-left:10px}
+.word-surface iframe{width:100%;height:700px;border:0;display:block;background:#fff}
 .settings{max-width:880px;margin:22px auto 0;background:#fff;border:1px solid #e0e5df;border-radius:12px;box-shadow:0 6px 20px #163d3809}
 .settings summary{display:flex;align-items:center;gap:14px;cursor:pointer;padding:19px 24px;font-weight:700;list-style:none}
 .settings summary::-webkit-details-marker{display:none}

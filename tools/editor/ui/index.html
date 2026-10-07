@@ -12,6 +12,7 @@
     <aside class="sidebar">
       <div class="brand"><span class="brand-mark">J.</span><div><strong>Junshi Blog</strong><small>写作台</small></div></div>
       <button id="new-post" class="new-button" type="button">＋ 写新文章</button>
+      <button id="import-word" class="word-button" type="button">↥ 导入Word文档</button><input id="word-file" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
       <div class="side-title"><span>我的文章</span><span id="post-count">0</span></div>
       <div id="article-list" class="article-list"></div>
       <div class="sidebar-bottom"><a href="https://junshi0227.github.io/" target="_blank" rel="noopener">打开线上博客 ↗</a><span>内容保存在这台电脑</span></div>
@@ -30,6 +31,7 @@
           <label for="title" class="visually-hidden">文章标题</label><input id="title" class="paper-title" type="text" placeholder="写下文章标题" maxlength="150">
           <div class="paper-rule"></div>
           <div id="editor"></div>
+          <div id="word-surface" class="word-surface" hidden><div class="word-mode-bar"><span>这篇文章使用Word中的字体与排版。修改正文请在Word中调整，再重新导入。<a id="word-pdf" target="_blank" rel="noopener" hidden>查看原版PDF</a></span><button id="reimport-word" class="button subtle" type="button">重新导入Word</button></div><iframe id="word-frame" title="Word文章正文" sandbox="allow-same-origin"></iframe></div>
         </article>
         <details id="post-settings" class="settings">
           <summary><span>文章设置</span><small>摘要、分类、标签、封面与发布日期</small></summary>
@@ -47,7 +49,7 @@
   <div id="toast" role="status" aria-live="polite"></div>
   <dialog id="preview-dialog" class="preview-dialog"><div class="preview-top"><div><strong>文章预览</strong><small>当前编辑内容，本机预览</small></div><button id="close-preview" type="button" class="button subtle">关闭</button></div><iframe id="preview-frame" title="文章预览" sandbox=""></iframe></dialog>
   <dialog id="confirm-dialog"><form method="dialog"><h2>继续编辑这篇文章？</h2><p>切换文章前，请先保存当前修改。</p><div class="dialog-actions"><button value="cancel" class="button subtle">返回</button><button value="discard" class="button primary">放弃未保存修改</button></div></form></dialog>
-  <script src="/vendor/toastui-editor.js"></script>
+  <script src="/editor.bundle.js"></script>
   <script src="/vendor/i18n/zh-cn.js"></script>
   <script src="/app.js"></script>
 </body>

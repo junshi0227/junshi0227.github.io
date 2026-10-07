@@ -8,10 +8,11 @@ let working = false;
 let toastTimer;
 let bodyDirty = false;
 let originalBody = '';
+let wordReplaceId = '';
 
 if (!window.toastui?.Editor) {
   $('notice').hidden = false;
-  $('notice').textContent = '排版编辑器加载失败。请检查本机依赖是否安装完成，再刷新页面。';
+  $('notice').textContent = '排版编辑器加载失败。请关闭写作台的命令行窗口，重新双击“打开写作台.cmd”，然后按Ctrl+F5刷新。';
   throw Error('TOAST UI Editor未加载');
 }
 
@@ -87,7 +88,12 @@ function fill(post) {
   $('thumbnail').value = post?.thumbnail || '';
   $('save-draft').textContent = post?.status === 'post' ? '撤下并存为草稿' : '保存为草稿';
   showCover();
-  editor.setMarkdown(post?.body || '', false);
+  $('word-surface').hidden = !post?.wordUrl;
+  $('editor').hidden = Boolean(post?.wordUrl);
+  $('word-frame').src = post?.wordUrl || 'about:blank';
+  $('word-pdf').hidden = !post?.wordPdfUrl;
+  if (post?.wordPdfUrl) $('word-pdf').href = post.wordPdfUrl;
+  editor.setMarkdown(post?.wordUrl ? '' : post?.body || '', false);
   originalBody = post?.body || '';
   bodyDirty = false;
   setDirty(false);
@@ -134,6 +140,21 @@ for (const id of fields) $(id).addEventListener('input', () => { setDirty(true);
 $('date').addEventListener('input', () => { $('paper-date').textContent = $('date').value.slice(0, 10); });
 editor.on('change', () => { bodyDirty = true; setDirty(true); });
 $('new-post').onclick = async () => { if (await confirmSwitch()) fill(null); };
+$('import-word').onclick = async () => { if (await confirmSwitch()) { wordReplaceId = ''; $('word-file').click(); } };
+$('reimport-word').onclick = async () => { if (await confirmSwitch()) { wordReplaceId = current?.id || ''; $('word-file').click(); } };
+$('word-file').onchange = async event => {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  await perform('正在导入Word…', async () => {
+    const result = await api('/api/import-word', { method: 'POST', body: file, headers: { 'X-File-Name': encodeURIComponent(file.name), ...(wordReplaceId ? { 'X-Replace-Id': wordReplaceId } : {}) } });
+    fill(result.post);
+    await refreshList();
+    notice('Word正文已导入，字体和排版以Word导出的版本显示。请先预览，再点击“发布上线”。');
+    $('save-state').textContent = 'Word已导入本机';
+  });
+  event.target.value = '';
+};
+$('word-frame').onload = () => { try { $('word-frame').style.height = Math.max(700, $('word-frame').contentDocument.documentElement.scrollHeight + 20) + 'px'; } catch {} };
 $('settings-shortcut').onclick = () => { $('post-settings').open = true; $('post-settings').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 $('save').onclick = () => perform('正在保存…', () => save(current?.status || 'draft'));
 $('save-draft').onclick = () => perform('正在保存草稿…', () => save('draft'));
@@ -145,6 +166,13 @@ $('cover-upload').onchange = async event => {
 };
 function escapeHTML(value) { return String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]); }
 $('preview').onclick = () => {
+  if (current?.wordUrl) {
+    $('preview-frame').srcdoc = '';
+    $('preview-frame').src = current.wordUrl;
+    $('preview-dialog').showModal();
+    return;
+  }
+  $('preview-frame').src = 'about:blank';
   const title = escapeHTML($('title').value.trim() || '未命名文章');
   const date = escapeHTML($('date').value.slice(0, 10));
   const content = editor.getHTML();
