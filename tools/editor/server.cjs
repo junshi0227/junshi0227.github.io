@@ -5,12 +5,14 @@ const crypto = require('node:crypto');
 const { spawn } = require('node:child_process');
 const matter = require('gray-matter');
 const { convertWordDocument } = require('./word-import.cjs');
+const { extensionOf, validateSignature, convertEmbedded } = require('./document-import.cjs');
 
 const root = path.resolve(__dirname, '../..');
 const postsDir = path.join(root, 'source/_posts');
 const draftsDir = path.join(root, 'source/_drafts');
 const imageDir = path.join(root, 'source/images/editor');
 const wordDir = path.join(root, 'source/word');
+const importDir = path.join(root, 'source/imports');
 const publicDir = path.join(root, 'public');
 const uiDir = path.join(__dirname, 'ui');
 const vendorDir = path.join(root, 'node_modules/@toast-ui/editor/dist');
@@ -19,7 +21,7 @@ const touched = new Set();
 const ports = { editor: Number(process.env.BLOG_EDITOR_PORT || 4001), preview: Number(process.env.BLOG_PREVIEW_PORT || 4002) };
 let busy = false;
 
-const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.gif': 'image/gif', '.woff': 'font/woff', '.woff2': 'font/woff2', '.json': 'application/json; charset=utf-8' };
+const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.gif': 'image/gif', '.pdf': 'application/pdf', '.woff': 'font/woff', '.woff2': 'font/woff2', '.json': 'application/json; charset=utf-8' };
 function json(res, code, value) { res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(value)); }
 function safeFile(base, name) {
   const file = path.resolve(base, name);
@@ -59,7 +61,7 @@ async function list() {
 }
 async function readPost(id) {
   const parsed = matter(await fs.readFile(idPath(id), 'utf8'));
-  const wordUrl = parsed.content.match(/<iframe[^>]+src=["'](\/word\/[a-z0-9-]+\/index\.html)["']/i)?.[1] || '';
+  const wordUrl = parsed.content.match(/<iframe[^>]+src=["'](\/(?:word|imports)\/[a-z0-9-]+\/index\.html)["']/i)?.[1] || '';
   const wordPdfUrl = wordUrl && await fs.access(safeFile(path.join(root, 'source'), wordUrl.slice(1).replace(/index\.html$/, 'index.pdf'))).then(() => wordUrl.replace(/index\.html$/, 'index.pdf')).catch(() => '') || '';
   return { ...summary(id, parsed), updated: dateString(parsed.data.updated), categories: labels(parsed.data.categories), tags: labels(parsed.data.tags), mathjax: Boolean(parsed.data.mathjax), body: parsed.content.trimStart(), complex: /(?:\$\$|\\\(|\\\[|<script\b|<iframe\b|<table\b)/i.test(parsed.content), wordUrl, wordPdfUrl };
 }
@@ -107,20 +109,38 @@ async function save(data) {
   }
   return readPost(id);
 }
-async function importWord(bytes, filename, replaceId) {
-  if (!/^PK[\x03\x05\x07]/.test(bytes.toString('binary', 0, 4))) throw Error('这不是有效的DOCX文件');
+async function importDocument(bytes, filename, replaceId) {
+  const extension = extensionOf(filename);
+  validateSignature(bytes, extension);
   let existing = null;
   if (replaceId) {
     existing = await readPost(replaceId);
-    if (!existing.wordUrl) throw Error('只能对已导入的Word文章重新导入');
+    if (!existing.wordUrl) throw Error('只能对已导入的文档重新导入');
   }
-  const slug = existing?.slug || `word-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`;
-  const destination = safeFile(wordDir, slug);
-  const files = await convertWordDocument(bytes, destination, path.join(__dirname, 'convert-word.ps1'));
-  for (const file of files) touched.add(`source/word/${slug}/${file.replaceAll('\\', '/')}`);
-  const pdfLink = await fs.access(path.join(destination, 'index.pdf')).then(() => `<p><a href="/word/${slug}/index.pdf" target="_blank" rel="noopener">查看Word原版排版(PDF)</a></p>\n`).catch(() => '');
-  const embedded = `${pdfLink}<iframe class="word-article-embed" src="/word/${slug}/index.html" title="Word文章正文" sandbox="allow-same-origin" style="width:100%;height:900px;border:0;display:block" onload="this.style.height=Math.max(720,this.contentDocument.documentElement.scrollHeight)+'px'"></iframe>`;
-  return save({ id: existing?.id, slug, title: existing?.title || filename.replace(/\.docx$/i, ''), date: existing?.date || now(), description: existing?.description || '', categories: existing?.categories || [], tags: existing?.tags || [], thumbnail: existing?.thumbnail || '', mathjax: existing?.mathjax || false, body: embedded, status: existing?.status || 'draft' });
+  const title = existing?.title || filename.slice(0, -extension.length);
+  const slug = existing?.slug || `import-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`;
+  let embedded = '';
+  if (extension === '.md' || extension === '.markdown' || extension === '.txt') {
+    if (existing) throw Error('重新导入时请选择Word、LaTeX、HTML或PDF等固定排版文档');
+    const text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    const parsed = extension === '.txt' ? { content: text, data: {} } : matter(text);
+    embedded = parsed.content;
+    return save({ slug, title: String(parsed.data.title || title), date: now(), description: String(parsed.data.description || ''), categories: labels(parsed.data.categories), tags: labels(parsed.data.tags), thumbnail: '', mathjax: /\$\$|\\\[/.test(embedded), body: embedded, status: 'draft' });
+  }
+  const oldWord = Boolean(existing?.wordUrl.startsWith('/word/'));
+  const directory = oldWord ? wordDir : importDir;
+  const publicPrefix = oldWord ? 'word' : 'imports';
+  const destination = safeFile(directory, slug);
+  if (['.docx', '.doc', '.rtf', '.odt'].includes(extension)) {
+    const files = await convertWordDocument(bytes, destination, path.join(__dirname, 'convert-word.ps1'), extension);
+    for (const file of files) touched.add(`source/${publicPrefix}/${slug}/${file.replaceAll('\\', '/')}`);
+  } else {
+    await convertEmbedded(bytes, filename, destination);
+    for (const file of await fs.readdir(destination)) touched.add(`source/${publicPrefix}/${slug}/${file}`);
+  }
+  const pdfLink = await fs.access(path.join(destination, 'index.pdf')).then(() => `<p><a href="/${publicPrefix}/${slug}/index.pdf" target="_blank" rel="noopener">查看原版PDF</a></p>\n`).catch(() => '');
+  embedded = `${pdfLink}<iframe class="word-article-embed" src="/${publicPrefix}/${slug}/index.html" title="导入的文档正文" sandbox="allow-same-origin" style="width:100%;height:900px;border:0;display:block" onload="this.style.height=Math.max(720,this.contentDocument.documentElement.scrollHeight)+'px'"></iframe>`;
+  return save({ id: existing?.id, slug, title, date: existing?.date || now(), description: existing?.description || '', categories: existing?.categories || [], tags: existing?.tags || [], thumbnail: existing?.thumbnail || '', mathjax: existing?.mathjax || false, body: embedded, status: existing?.status || 'draft' });
 }
 function run(command, args, env = process.env) {
   return new Promise((resolve, reject) => {
@@ -160,8 +180,8 @@ async function publish() {
       try { return await fs.readFile(path.join(root, file), 'utf8'); } catch { return ''; }
     }))).join('\n');
     const images = [...publishedText.matchAll(/\/images\/editor\/([a-zA-Z0-9._-]+)/g)].map(match => `source/images/editor/${match[1]}`);
-    const wordPaths = [...publishedText.matchAll(/\/word\/([a-z0-9-]+)\/index\.html/g)].map(match => `source/word/${match[1]}`);
-    for (const file of [...new Set([...published, ...images, ...wordPaths])]) {
+    const documentPaths = [...publishedText.matchAll(/\/(word|imports)\/([a-z0-9-]+)\/index\.html/g)].map(match => `source/${match[1]}/${match[2]}`);
+    for (const file of [...new Set([...published, ...images, ...documentPaths])]) {
       try { await fs.access(path.join(root, file)); paths.push(file); }
       catch {
         try { await run(git, ['ls-files', '--error-unmatch', '--', file], env); paths.push(file); }
@@ -195,11 +215,11 @@ const editorServer = http.createServer(async (req, res) => {
     if (req.method === 'POST') {
       checkWrite(req);
       if (url.pathname === '/api/save') return json(res, 200, { post: await save(JSON.parse((await body(req)).toString('utf8'))) });
-      if (url.pathname === '/api/import-word') {
+      if (url.pathname === '/api/import-word' || url.pathname === '/api/import-document') {
         const filename = decodeURIComponent(String(req.headers['x-file-name'] || '文章.docx'));
-        if (!/\.docx$/i.test(filename) || filename.includes('/') || filename.includes('\\')) throw Error('请选择DOCX格式的Word文档');
+        if (filename.includes('/') || filename.includes('\\') || filename.includes('\0')) throw Error('文档文件名无效');
         const replaceId = req.headers['x-replace-id'] ? String(req.headers['x-replace-id']) : '';
-        return json(res, 200, { post: await importWord(await body(req, 25 * 1024 * 1024), filename, replaceId) });
+        return json(res, 200, { post: await importDocument(await body(req, 25 * 1024 * 1024), filename, replaceId) });
       }
       if (url.pathname === '/api/upload') {
         const name = String(req.headers['x-file-name'] || 'image.png');
@@ -226,7 +246,7 @@ const editorServer = http.createServer(async (req, res) => {
     }
     if (req.method === 'GET' && url.pathname.startsWith('/vendor/')) return staticFile(res, vendorDir, url.pathname.slice(8));
     if (req.method === 'GET' && url.pathname.startsWith('/images/')) return staticFile(res, path.join(root, 'source'), url.pathname.slice(1));
-    if (req.method === 'GET' && url.pathname.startsWith('/word/')) return staticFile(res, path.join(root, 'source'), url.pathname.slice(1));
+    if (req.method === 'GET' && (url.pathname.startsWith('/word/') || url.pathname.startsWith('/imports/'))) return staticFile(res, path.join(root, 'source'), url.pathname.slice(1));
     if (req.method === 'GET' && url.pathname === '/') return staticFile(res, uiDir, 'index.html');
     if (req.method === 'GET') return staticFile(res, uiDir, url.pathname.slice(1));
     json(res, 404, { error: '页面不存在' });

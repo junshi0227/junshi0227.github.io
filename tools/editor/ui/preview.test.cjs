@@ -70,7 +70,7 @@ test('Word import opens its formatted page and PDF link', async () => {
   }
   window.toastui = { Editor: FakeEditor };
   const imported = { id: 'draft:word-test', slug: 'word-test', status: 'draft', title: 'Word测试', date: '2026-10-08 10:00:00', categories: [], tags: [], body: '<iframe src="/word/word-test/index.html"></iframe>', wordUrl: '/word/word-test/index.html', wordPdfUrl: '/word/word-test/index.pdf' };
-  window.fetch = async url => ({ ok: true, json: async () => url === '/api/import-word' ? { post: imported } : { token: 'test', posts: [] } });
+  window.fetch = async url => ({ ok: true, json: async () => url === '/api/import-document' ? { post: imported } : { token: 'test', posts: [] } });
   window.eval(fs.readFileSync(path.join(dir, 'app.js'), 'utf8'));
   await new Promise(resolve => setTimeout(resolve, 0));
   const file = new window.File(['sample'], 'sample.docx', { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });

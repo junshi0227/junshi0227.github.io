@@ -48,7 +48,7 @@ async function walkFiles(dir, prefix = '') {
   return found;
 }
 
-async function convertWordDocument(bytes, destination, script) {
+async function convertWordDocument(bytes, destination, script, extension = '.docx') {
   const tempRoot = path.resolve(os.tmpdir());
   const workspaceRoot = path.resolve(__dirname, '../..');
   const resolvedDestination = path.resolve(destination);
@@ -59,7 +59,7 @@ async function convertWordDocument(bytes, destination, script) {
   const backup = `${resolvedDestination}.backup-${suffix}`;
   if (![staged, backup].every(file => file.startsWith(workspaceRoot + path.sep))) throw Error('Word暂存目录不在博客仓库内');
   try {
-    const input = path.join(temporary, 'source.docx');
+    const input = path.join(temporary, `source${extension}`);
     const output = path.join(temporary, 'index.html');
     await fs.writeFile(input, bytes);
     await runConverter(script, input, output);

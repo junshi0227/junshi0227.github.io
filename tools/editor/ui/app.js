@@ -12,7 +12,7 @@ let wordReplaceId = '';
 
 if (!window.toastui?.Editor) {
   $('notice').hidden = false;
-  $('notice').textContent = '排版编辑器加载失败。请关闭写作台的命令行窗口，重新双击“打开写作台.cmd”，然后按Ctrl+F5刷新。';
+  $('notice').textContent = '排版编辑器加载失败。请刷新页面；仍失败时双击桌面的“Junshi Blog写作台”重新打开。';
   throw Error('TOAST UI Editor未加载');
 }
 
@@ -145,12 +145,12 @@ $('reimport-word').onclick = async () => { if (await confirmSwitch()) { wordRepl
 $('word-file').onchange = async event => {
   const file = event.target.files?.[0];
   if (!file) return;
-  await perform('正在导入Word…', async () => {
-    const result = await api('/api/import-word', { method: 'POST', body: file, headers: { 'X-File-Name': encodeURIComponent(file.name), ...(wordReplaceId ? { 'X-Replace-Id': wordReplaceId } : {}) } });
+  await perform('正在导入文档…', async () => {
+    const result = await api('/api/import-document', { method: 'POST', body: file, headers: { 'X-File-Name': encodeURIComponent(file.name), ...(wordReplaceId ? { 'X-Replace-Id': wordReplaceId } : {}) } });
     fill(result.post);
     await refreshList();
-    notice('Word正文已导入，字体和排版以Word导出的版本显示。请先预览，再点击“发布上线”。');
-    $('save-state').textContent = 'Word已导入本机';
+    notice(result.post.wordUrl ? '文档已导入并保留原有排版。请先预览，再点击“发布上线”。' : '文本已导入到可视化编辑器，可以直接修改排版；检查后再发布上线。');
+    $('save-state').textContent = '文档已导入本机';
   });
   event.target.value = '';
 };

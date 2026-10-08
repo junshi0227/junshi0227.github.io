@@ -9,7 +9,7 @@
     "new": "hexo new",
     "editor": "node tools/editor/server.cjs",
     "build:editor": "node tools/editor/build-assets.cjs",
-    "test:editor": "node --test tools/editor/ui/preview.test.cjs tools/editor/word-import.test.cjs"
+    "test:editor": "node --test tools/editor/ui/preview.test.cjs tools/editor/word-import.test.cjs tools/editor/document-import.test.cjs"
   },
   "private": true,
   "engines": {

@@ -21,6 +21,7 @@
 .paper .toastui-editor-contents p{margin:0 0 1em}
 .word-button{border:1px solid #62817a;background:transparent;color:#e5efe9;border-radius:12px;padding:12px 13px;text-align:left;font-weight:700;margin:-17px 0 27px}
 .word-button:hover{background:#28514d}
+.import-hint{font-size:11px;line-height:1.6;color:#abc8c0;margin:-19px 7px 24px}
 .word-surface[hidden]{display:none}
 .word-mode-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#eef5f0;border-radius:9px;padding:12px 15px;margin-bottom:18px;color:#42665b;font-size:12px;line-height:1.6}
 .word-mode-bar a{color:#246b5d;font-weight:700;margin-left:10px}
